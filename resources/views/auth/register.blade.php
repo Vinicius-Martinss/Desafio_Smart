@@ -1,3 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -58,3 +62,4 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+<x-footer></x-footer>

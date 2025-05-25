@@ -1,3 +1,5 @@
+
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -52,5 +54,9 @@
                 @endif
             </div>
         </form>
+
     </x-authentication-card>
+    <x-footer></x-footer>
+
 </x-guest-layout>
+

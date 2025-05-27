@@ -1,0 +1,255 @@
+/* Estilos da Navbar inspirados no site smarttelecom.eng.br */
+.smart-navbar {
+    background: white;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .nav-menu {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-menu a {
+    color: #2b2b2b;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+  }
+  
+  .nav-menu a:hover {
+    color: #0077b5;
+  }
+  
+  .nav-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .login-areacliente{
+    color: #1da1f2;
+ }
+
+ .login-areacliente:hover{
+  color: #0077b5;
+ }
+
+  .btn-contact {
+    background: #1da1f2;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .btn-contact:hover {
+    background: #0077b5;
+    color: white;
+  }
+  
+  /* Espaço para o conteúdo */
+  .content-wrapper {
+    margin-top: 80px;
+  }
+
+
+  
+    .smart-navbar {
+      background: white;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1030;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-menu a {
+      color: #2b2b2b;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+    
+    .nav-menu a:hover {
+      color: #1da1f2;
+    }
+    
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    
+    .btn-contact {
+      background: #1da1f2;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    
+   
+
+
+  /* HERO BANNER */
+  .hero-banner {
+    background: #5a7bff;
+    padding: 80px 0;
+    margin-top: 70px;
+    overflow: hidden;
+    border-radius: 0 0 50px 50px;
+  }
+  
+  .hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    min-height: 500px;
+  }
+  
+  .hero-text {
+    flex: 1;
+    color: white;
+    max-width: 600px;
+    z-index: 2;
+  }
+  
+  /*BOTÕES  */
+  .hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .btn-primary {
+    background: white;
+    color: #5a7bff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-outline {
+    border: 2px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  
+  /* IMAGEM À DIREITA */
+  .hero-image {
+    position: absolute;
+    right: 0;
+    height: 90%;
+    max-height: 600px;
+    object-fit: contain;
+    object-position: right;
+  }
+  
+  /* RESPONSIVIDADE */
+  @media (max-width: 1200px) {
+    .hero-image {
+      height: 80%;
+      opacity: 0.9;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .hero-container {
+      flex-direction: column;
+      text-align: center;
+      min-height: auto;
+      padding-bottom: 40px;
+    }
+    
+    .hero-text {
+      max-width: 100%;
+    }
+    
+    .hero-buttons {
+      justify-content: center;
+    }
+    
+    .hero-image {
+      position: relative;
+      height: auto;
+      width: 70%;
+      margin-top: 40px;
+      right: auto;
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-buttons {
+      flex-direction: column;
+    }
+    
+    .hero-image {
+      width: 100%;
+    }
+  }
+
+  .espacamento {
+    padding-top: 1rem ;
+    padding-bottom: 2rem ;
+    margin-top: 4rem ;
+  }

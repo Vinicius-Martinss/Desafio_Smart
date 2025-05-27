@@ -1,0 +1,25 @@
+
+  /* Efeito hover nos botões */
+  .hover-card {
+    transition: all 0.3s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  /* Estilo premium para os botões */
+  .btn-success {
+    background-color: #25D366;
+    border-color: #25D366;
+    transition: all 0.3s;
+  }
+  .btn-success:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+  }
+  
+  /* Ajuste de espaçamento */
+  .modal-footer {
+    padding: 1.5rem;
+  }

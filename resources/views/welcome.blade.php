@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smart Telecom</title>
 
-  <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
@@ -28,7 +27,7 @@
 </style>
 
 <body class="v-cloak">
-  <!-- Navbar no padrão Smart Telecom -->
+
   <nav class="smart-navbar">
     <div class="nav-container">
       <!-- Logo -->

@@ -84,7 +84,7 @@ id="layout-navbar">
           
           <li>
             <div class="dropdown-header text-body-secondary small">
-              {{ __('Manage Team') }}
+              {{ __('Gerenciar equipes') }}
             </div>
           </li>
           
@@ -109,7 +109,7 @@ id="layout-navbar">
             
             <li>
               <div class="dropdown-header text-body-secondary small">
-                {{ __('Switch Teams') }}
+                {{ __('Trocar de Equipe') }}
               </div>
             </li>
             

@@ -6,6 +6,8 @@
   width: 260px;
 }
 
+
+
 /* Itens e texto — escondendo tudo quando fechado */
 #layout-menu.collapsed .app-brand-text,
 #layout-menu.collapsed .menu-text,
@@ -20,10 +22,7 @@
   display: none !important;
 }
 
-/* Centralizar apenas o logo */
-#layout-menu.collapsed .app-brand-link {
-  justify-content: center !important;
-}
+
 
 /* Mostrar tudo quando estiver expandido */
 #layout-menu.expanded .app-brand-text,
@@ -38,16 +37,16 @@
 
 /* Transições suaves */
 #layout-menu {
-  transition: width 0.2s ease;
+  transition: width 0.4s ease;
 }
 #layout-menu .app-brand-link,
 #layout-menu .menu-link {
-  transition: justify-content 0.2s ease;
+  transition: justify-content 0.4s ease;
 }
 #layout-menu .app-brand-text,
 #layout-menu .menu-text,
 #layout-menu .text-truncate {
-  transition: opacity 0.2s ease, visibility 0.2s ease, width 0.2s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease, width 0.4s ease;
 }
 
 /* Toggle button (mantém igual) */
@@ -59,4 +58,9 @@
   background: #fff;
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+#layout-menu.collapsed .menu-header 
+{
+  opacity: 0 !important;
+  visibility: hidden !important;
 }

@@ -3,7 +3,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo position-relative">
     <a href="{{ route('dashboard') }}" class="app-brand-link d-flex align-items-center">
-      <img src="{{ asset('img/Logo.png') }}" alt="Smart Telecom" class="d-block" style="height: 50px; width: auto;" />
+      <img src="{{ asset('img/Logo.png') }}" alt="Smart Telecom" class="d-block" style="height: 50px; width: auto;   " />
       <span class="app-brand-text demo menu-text fw-bold ms-2">Smart</span>
     </a>
     <button id="menu-toggle-btn" class="btn p-0 toggle-btn">

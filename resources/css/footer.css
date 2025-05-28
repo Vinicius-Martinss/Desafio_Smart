@@ -122,11 +122,11 @@ body {
   
   
   .footer-bottom {
-    background: var(--texto);
-    padding: 10px 0;
-    text-align: center;
-    margin-top: 20px;
+    margin: 0 !important;      
+    padding: 10px 0 !important; 
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--texto);
+    text-align: center;
     width: 100%;
     grid-column: 1 / -1;
   }

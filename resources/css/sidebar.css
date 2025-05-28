@@ -1,0 +1,62 @@
+/* Estados */
+#layout-menu.collapsed {
+  width: 80px;
+}
+#layout-menu.expanded {
+  width: 260px;
+}
+
+/* Itens e texto — escondendo tudo quando fechado */
+#layout-menu.collapsed .app-brand-text,
+#layout-menu.collapsed .menu-text,
+#layout-menu.collapsed .text-truncate {
+  opacity: 0 !important;
+  visibility: hidden !important;
+
+}
+
+/* Esconder submenus totalmente */
+#layout-menu.collapsed .menu-inner .menu-sub {
+  display: none !important;
+}
+
+/* Centralizar apenas o logo */
+#layout-menu.collapsed .app-brand-link {
+  justify-content: center !important;
+}
+
+/* Mostrar tudo quando estiver expandido */
+#layout-menu.expanded .app-brand-text,
+#layout-menu.expanded .menu-text,
+#layout-menu.expanded .text-truncate {
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: auto !important;
+  margin: initial !important;
+  padding: initial !important;
+}
+
+/* Transições suaves */
+#layout-menu {
+  transition: width 0.2s ease;
+}
+#layout-menu .app-brand-link,
+#layout-menu .menu-link {
+  transition: justify-content 0.2s ease;
+}
+#layout-menu .app-brand-text,
+#layout-menu .menu-text,
+#layout-menu .text-truncate {
+  transition: opacity 0.2s ease, visibility 0.2s ease, width 0.2s ease;
+}
+
+/* Toggle button (mantém igual) */
+.app-brand .toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}

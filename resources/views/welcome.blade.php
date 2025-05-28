@@ -53,7 +53,7 @@
 
   <section class="hero-banner">
     <div class="hero-container">
-      <!-- Conteúdo do lado esquerdo -->
+ 
       <div class="hero-text">
         <h1 class="hero-title">Soluções em Telecomunicações para sua Empresa</h1>
         <p class="hero-subtitle">Internet dedicada, links corporativos e soluções em nuvem com a qualidade Smart Telecom</p>
@@ -62,7 +62,7 @@
         </div>
       </div>
       
-      <!-- Imagem colada à direita -->
+
       <img src="{{ asset('img/projetos.png') }}" alt="Soluções Telecom" class="hero-image">
     </div>
   </section>
@@ -71,12 +71,12 @@
   <section id="servicos" class="espacamento bg-gray-50 py-12"> 
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <!-- Título principal destacado -->
+       
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
           <span class="border-b-4 border-blue-500 pb-2">Nossos Serviços</span>
         </h2>
         
-        <!-- Frase descritiva com maior destaque -->
+
         <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Conheça nossas <span class="font-semibold text-blue-600">soluções completas</span> em telecomunicações para sua empresa
         </p>
@@ -94,7 +94,7 @@
                    data-title="Consultoria CREA"
                    data-description="Ajudamos você a registrar e regularizar seus projetos de engenharia junto ao CREA, cuidando de toda a parte burocrática e técnica."
                    data-img="{{ asset('img/crea.jpeg') }}"
-                   data-price="1200"> <!-- Alterado para apenas o número -->
+                   data-price="1200"> 
                    
                 <div class="card-body d-flex flex-column">
                   <img class="card-img-top card-img-fixed mb-3" src="{{ asset('img/crea.jpeg') }}" alt="Serviço Crea">
@@ -329,4 +329,4 @@
 
 </body>
 </html>
->>>>>>> salvando-alteracoes
+

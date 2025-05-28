@@ -45,14 +45,30 @@
         </div>
         
         <div class="footer-contact">
+            <h3 class="footer-title">Endereço</h3>
+            <div class="contact-section">
+                <div class="contact-item">
+                    <i class="material-icons">place</i>
+                    <p>Rua Daniel Esmero, 574, Croatá II</p>
+                </div>
+            </div>
+            
             <h3 class="footer-title">Contato</h3>
-            <p><i class="material-icons">place</i>Rua Daniel Esmero, 574, Croatá II</p>
-            <p><i class="material-icons">email</i>smart_telecom@gmail.com</p>
-            <p><i class="material-icons">phone</i>85991527388</p>
-            <p><i class="material-icons">phone</i>85992203010</p>
+            <div class="contact-section">
+                <div class="contact-item">
+                    <i class="material-icons">email</i>
+                    <p>smart_telecom@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="material-icons">phone</i>
+                    <p>(85) 99152-7388</p>
+                </div>
+                <div class="contact-item">
+                    <i class="material-icons">phone</i>
+                    <p>(85) 99220-3010</p>
+                </div>
+            </div>
         </div>
-    </div>
-    
     <div class="footer-bottom">
         <div class="footer-container">
             <p>&copy; {{ date('Y') }} {{ config('app.name') }}. Todos os direitos reservados.</p>
@@ -61,11 +77,7 @@
 </footer>
 
 @push('styles')
-<style>
-    .smart-footer { background: #2b2b2b; color: white; padding: 60px 0 30px; }
-    .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; 
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-</style>
+
 @endpush
 
 @push('scripts')

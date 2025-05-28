@@ -6,7 +6,7 @@
 }
 
 
-
+/* nav bar */
 .smart-navbar {
     background: var(--fundo);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
     width: 100%;
     z-index: 1030;
   }
-  
+  /* nav bar container */
   .nav-container {
     display: flex;
     justify-content: space-between;
@@ -29,6 +29,7 @@
   
   .navbar-brand img {
     height: 40px;
+    margin-left: 15px;
   }
   
   .nav-menu {
@@ -53,16 +54,16 @@
     gap: 15px;
     align-items: center;
   }
-  
+  /* botao area cliente */
   .login-areacliente{
     color: var(--detalhe);
  }
-
+ /* botao area cliente hover */
  .login-areacliente:hover{
   color: var(--texto);
-  transition: 1s;;
+  transition: all 0.3s ease;
  }
-
+ /* botao contato*/
   .btn-contact {
     background: var(--detalhe);
     color: var(--fundo);
@@ -70,7 +71,7 @@
     border-radius: 6px;
     font-weight: 500;
   }
-  
+   /* botao contato hover*/
   .btn-contact:hover {
     background: var(--detalhe);
     color: var(--fundo);
@@ -80,65 +81,6 @@
   .content-wrapper {
     margin-top: 80px;
   }
-
-
-  
-    .smart-navbar {
-      background: var(--fundo);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      padding: 15px 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1030;
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-      width: 100%;
-    }
-    
-    .navbar-brand img {
-      height: 40px;
-    }
-    
-    .nav-menu {
-      display: flex;
-      gap: 30px;
-    }
-    
-    .nav-menu a {
-      color: var(--texto);
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 15px;
-    }
-    
-    .nav-menu a:hover {
-      color: var(--detalhe);
-    }
-    
-    .nav-actions {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-    
-    .btn-contact {
-      background: var(--detalhe);
-      color: var(--fundo);
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-weight: 500;
-    }
-    
-   
 
 
   /* HERO BANNER */
@@ -169,13 +111,13 @@
     z-index: 2;
   }
   
-  /*BOTÕES  */
+  /*Botão  */
   .hero-buttons {
     display: flex;
     gap: 15px;
     margin-top: 30px;
   }
-  
+  /*Botão do serviços */
   .btn-primary {
     background: var(--fundo);
     color: var(--detalhe);
@@ -186,16 +128,8 @@
     transition: all 0.3s ease;
   }
   
-  .btn-outline {
-    border: 2px solid white;
-    color: var(--fundo);
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
+
+  /*Botão do serviços hover */
   .btn-primary:hover {
     color: var(--detalhe);
     transform: translateY(-3px);
@@ -204,60 +138,75 @@
   
   
   
-  /* IMAGEM À DIREITA */
-  .hero-image {
-    position: absolute;
-    right: 0;
-    height: 90%;
-    max-height: 600px;
-    object-fit: contain;
-    object-position: right;
-  }
   
-  /* RESPONSIVIDADE */
-  @media (max-width: 1200px) {
-    .hero-image {
-      height: 80%;
-      opacity: 0.9;
-    }
-  }
-  
-  @media (max-width: 1024px) {
-    .hero-container {
-      flex-direction: column;
-      text-align: center;
-      min-height: auto;
-      padding-bottom: 40px;
-    }
-    
-    .hero-text {
-      max-width: 100%;
-    }
-    
-    .hero-buttons {
-      justify-content: center;
-    }
-    
-    .hero-image {
-      position: relative;
-      height: auto;
-      width: 70%;
-      margin-top: 40px;
-      right: auto;
-      opacity: 1;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .hero-buttons {
-      flex-direction: column;
-    }
-    
-    .hero-image {
-      width: 100%;
-    }
-  }
+ /* IMAGEM À DIREITA  */
+.hero-image {
+  position: relative; 
+  height: 90%;
+  max-height: 600px;
+  object-fit: contain;
+  margin-left: auto; 
+  display: block;
+  width: auto;
+  max-width: 50%; 
+}
 
+/* ADICIONE ESTE MEDIA QUERY NOVO */
+@media (max-width: 1440px) {
+  .hero-image {
+    max-width: 45%;
+  }
+}
+
+/* MANTENHA SEU EXISTENTE COM PEQUENOS AJUSTES */
+@media (max-width: 1200px) {
+  .hero-image {
+    height: 80%;
+    opacity: 0.9;
+    max-width: 50%; 
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+  
+  .hero-text {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-image {
+    position: relative;
+    height: auto;
+    width: 70%;
+    max-width: 100%; 
+    margin: 40px auto 0; 
+    right: auto;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 60px 0;
+    border-radius: 0 0 30px 30px;
+  }
+  
+  .hero-image {
+    width: 100%;
+    max-height: 400px; 
+  }
+}
+/*espacamento da secoes hero e cards */
   .espacamento {
     padding-top: 1rem ;
     padding-bottom: 2rem ;

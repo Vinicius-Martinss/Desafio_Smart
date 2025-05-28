@@ -1,51 +1,82 @@
-/* ESTILOS ADICIONAIS PARA O FOOTER */
+
+:root {
+  --fundo: #EBEBEB;
+  --detalhe: #3AB6C9;
+  --cor-acento: #464646;
+  --texto:#131313;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+}
+
+  /* Classe principal que envolve TODO o footer */
 .smart-footer {
-    background: #2b2b2b;
-    color: white;
-    padding: 60px 0 30px;
-    font-family: 'Public Sans', sans-serif;
-    border-radius: 50px 50px 0 0;
-  }
-  
+  background: var(--texto);
+  color: var(--fundo);
+  padding: 60px 0 0; 
+  position: relative;
+  overflow: hidden; 
+  border-radius: 50px 50px 0 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+  /* Container que organiza as colunas do footer */
+   /* Define o layout grid responsivo */
   .footer-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 30px; 
+    align-items: start; 
   }
-  
+
+  /* Container do logo e nome da empresa */
   .footer-logo img {
     height: 40px;
     margin-bottom: 20px;
   }
   
+  /* Primeira coluna - Logo e sobre a empresa */
   .footer-about p {
-    color: #b1b1b1;
+    color: var(--fundo);
     line-height: 1.6;
     margin-bottom: 20px;
     font-size: 14px;
   }
   
+  /* Estiliza a área dos ícones sociais */
   .footer-social a {
     display: inline-block;
     margin-right: 15px;
-    color: #b1b1b1;
+    color: var(--fundo);
     transition: all 0.3s ease;
   }
   
+  /* Estiliza o hover dos ícones sociais */
   .footer-social a:hover {
-    color: #0077b5;
+    color: var(--detalhe);
   }
   
+/* Estiliza TODOS os títulos das seções (h3) */
   .footer-title {
-    color: white;
+    color: var(--fundo);
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin: 0 0 15px 0; /* Reset completo das margens */
+    padding: 0 0 10px 0; /* Reset completo dos paddings */
     position: relative;
-    padding-bottom: 10px;
+    line-height: 1.2; /* Altura de linha consistente */
   }
   
   .footer-title::after {
@@ -55,7 +86,8 @@
     bottom: 0;
     width: 40px;
     height: 2px;
-    background: #1da1f2;
+    background: var(--detalhe);
+
   }
   
   .footer-links ul {
@@ -64,11 +96,11 @@
   }
   
   .footer-links li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   
   .footer-links a {
-    color: #b1b1b1;
+    color: var(--fundo);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -76,34 +108,34 @@
   }
   
   .footer-links a:hover {
-    color: #0077b5;
+    color: var(--detalhe);
     padding-left: 5px;
   }
   
   .footer-contact p {
-    color: #b1b1b1;
+    color: var(--fundo);
     margin-bottom: 15px;
     font-size: 14px;
     display: flex;
     align-items: flex-start;
   }
   
-  .footer-contact i {
-    margin-right: 10px;
-    color: #1da1f2;
-  }
   
   .footer-bottom {
-    background: #1f1f1f;
-    padding: 20px 0;
+    background: var(--texto);
+    padding: 10px 0;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    grid-column: 1 / -1;
   }
   
   .footer-bottom p {
-    color: #b1b1b1;
-    font-size: 13px;
+    color: var(--fundo);
+    font-size: 14px;
     margin: 0;
+ 
   }
   
   /* Ícones (usando Material Icons) */
@@ -122,3 +154,62 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
+  .footer-contact {
+    position: relative;
+    margin-bottom: 15px;
+    padding-top: 0px;
+}
+
+.footer-contact h3 {
+    margin-bottom: 20px;
+}
+
+.contact-section {
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-section:last-child {
+    border-bottom: none;
+}
+
+.contact-section h4 {
+    color: var(--detalhe);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.contact-item i {
+    margin-right: 10px;
+    color: var(--detalhe);
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-bottom  {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
+.footer-about,
+.footer-links,
+.footer-contact {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}

@@ -6,3 +6,4 @@ import '../css/card.css';
 import '../css/modal.css';
 import '../css/sidebar.css';
 import './sidebar';
+import '../css/navbar.css';

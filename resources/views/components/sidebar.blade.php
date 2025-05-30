@@ -17,9 +17,9 @@
     <!-- Seção Suporte - Serviços como link simples -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Suporte</span></li>
     <li class="menu-item">
-      <a href="{{ route('servicos') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
+      <a href="{{ route('provedor.cadastro') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Serviços</div>
+        <div class="text-truncate" data-i18n="Account Settings">Cadastro</div>
       </a>
     </li>
 
@@ -30,7 +30,7 @@
     <li class="menu-item active open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-        <div class="text-truncate" data-i18n="Authentications">Authentications</div>
+        <div class="text-truncate" data-i18n="Authentications">Serviços</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">

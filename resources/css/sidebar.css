@@ -1,3 +1,11 @@
+:root {
+  --fundo: #EBEBEB;
+  --detalhe: #3AB6C9;
+  --cor-acento: #464646;
+  --texto:#131313;
+}
+
+
 
 /* Estados */
 #layout-menu.collapsed {
@@ -44,17 +52,17 @@
 
 /* Transições suaves */
 #layout-menu {
-  transition: width 0.3s ease;
+  transition: width 0.4s ease;
 }
 #layout-menu .app-brand-link,
 #layout-menu .menu-link {
-  transition: justify-content 0.3s ease;
+  transition: justify-content 0.4s ease;
 }
 #layout-menu .app-brand-text,
 #layout-menu .menu-text,
 #layout-menu .text-truncate,
 #layout-menu .toggle-btn {
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 /* Toggle button - posicionamento e estilo */
@@ -64,7 +72,7 @@
   right: -15px;
   transform: translateY(-50%);
   background: var(--detalhe); /* Usando sua cor azul */
-  color: white;
+  color: var(--fundo);
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   width: 28px;
@@ -74,7 +82,7 @@
   justify-content: center;
   cursor: pointer;
   z-index: 20;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   border: 2px solid white;
 }
 
@@ -112,3 +120,76 @@
   display: flex;
   align-items: center;
 }
+
+
+/* SIDEBAR PRINCIPAL */
+#layout-menu {
+  width: 80px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transition: width 0.4s ease;
+  overflow: visible; /* Alterado para visible */
+}
+
+#layout-menu.expanded {
+  width: 260px;
+}
+
+/* TOGGLE BUTTON */
+.app-brand .toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  background: var(--detalhe);
+  color: var(--fundo);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.4s ease;
+  border: 2px solid white;
+}
+
+.app-brand .toggle-btn:hover {
+  background: #3a56e4;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ELEMENTOS DA SIDEBAR */
+.app-brand-link img {
+  transition: all 0.4s ease;
+  width: auto;
+  max-height: 65px;
+}
+
+#layout-menu .menu-header,
+#layout-menu .text-truncate {
+  transition: opacity 0.4s ease, visibility 0.3s ease;
+}
+
+#layout-menu.collapsed .menu-header,
+#layout-menu.collapsed .text-truncate {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#layout-menu .menu-sub {
+  transition: all 0.3s ease;
+}
+
+#layout-menu.collapsed .menu-sub {
+  display: none !important;
+}
+
+

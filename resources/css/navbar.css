@@ -1,0 +1,18 @@
+
+  .app-navbar {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  /* Remove o fundo específico do container do search */
+  .navbar-nav.align-items-center.me-auto {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Mantém o search alinhado */
+  .nav-item.d-flex.align-items-center {
+    padding: 0 !important;
+    background: transparent !important;
+  }

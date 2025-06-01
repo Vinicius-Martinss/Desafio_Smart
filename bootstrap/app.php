@@ -12,7 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Adicione esta seção para registrar seu middleware
+        $middleware->alias([
+            'profile.complete' => \App\Http\Middleware\CheckProfileComplete::class,
+        ]);
+        
+        // Você pode adicionar outros middlewares globais aqui se necessário
+        // $middleware->append(\App\Http\Middleware\ExampleMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

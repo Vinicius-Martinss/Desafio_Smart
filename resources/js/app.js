@@ -7,3 +7,12 @@ import '../css/modal.css';
 import '../css/sidebar.css';
 import './sidebar';
 import '../css/navbar.css';
+
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
+import Inputmask from 'inputmask';
+window.Inputmask = Inputmask;

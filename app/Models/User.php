@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    
     use HasApiTokens;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -31,6 +32,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cpf',
+        'data_nascimento',
+        'genero',
+        'telefone',
+        'cep',
+        'logradouro',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado'
     ];
 
     /**
@@ -65,5 +77,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isProfileComplete(): bool
+    {
+        $requiredFields = [
+            'cpf', 'data_nascimento', 'genero', 'telefone',
+            'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado'
+        ];
+        
+        foreach ($requiredFields as $field) {
+            // Verifica se o campo está vazio ou nulo
+            if (empty($this->$field) || $this->$field === null) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }

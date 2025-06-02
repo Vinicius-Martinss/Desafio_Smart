@@ -20,13 +20,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         
-        // Validação robusta com mensagens personalizadas
+        // Validação
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'cpf' => [
                 'required',
                 'string',
-                'size:11', // 11 dígitos sem pontuação
+                'size:11',
                 Rule::unique('users')->ignore($user->id),
                 function ($attribute, $value, $fail) {
                     if (!preg_match('/^\d{11}$/', $value)) {
@@ -79,12 +79,27 @@ class ProfileController extends Controller
         }
 
         // Atualizar usuário
-        $user->update($validator->validated());
+        $user->update([
+            'name' => $request->name,
+            'cpf' => $request->cpf,
+            'data_nascimento' => $request->data_nascimento,
+            'genero' => $request->genero,
+            'telefone' => $request->telefone,
+            'cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+            'cpf_validado' => true, // Marca como validado (confiamos na validação frontend)
+            'cpf_ultima_verificacao' => now(),
+        ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Perfil atualizado com sucesso!',
-            'redirect' => route('dashboard') 
+            'redirect' => route('dashboard')
         ]);
     }
 }

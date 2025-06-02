@@ -33,6 +33,8 @@ class User extends Authenticatable
         'email',
         'password',
         'cpf',
+        'cpf_validado',
+        'cpf_ultima_verificacao',
         'data_nascimento',
         'genero',
         'telefone',
@@ -76,6 +78,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'cpf_validado' => 'boolean',
         ];
     }
 

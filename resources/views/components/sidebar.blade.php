@@ -26,40 +26,43 @@
     <!-- Removi a segunda entrada duplicada de Serviços -->
     
     <!-- Itens COM dropdown (mantidos) -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Suporte</span></li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
     <li class="menu-item active open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-        <div class="text-truncate" data-i18n="Authentications">Serviços</div>
+        <div class="text-truncate" data-i18n="Authentications">Conta Empresa</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
           <a href="auth-login-basic.html" class="menu-link" target="_blank">
-            <div class="text-truncate" data-i18n="Basic">Login</div>
+            <div class="text-truncate" data-i18n="Basic">Informações</div>
           </a>
         </li>
         <li class="menu-item">
           <a href="auth-register-basic.html" class="menu-link" target="_blank">
-            <div class="text-truncate" data-i18n="Basic">Register</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
-            <div class="text-truncate" data-i18n="Basic">Forgot Password</div>
+            <div class="text-truncate" data-i18n="Basic">Teams</div>
           </a>
         </li>
       </ul>
     </li>
 
     <!-- Outro item COM dropdown -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Account Settings</div>
+        <div class="text-truncate" data-i18n="Account Settings">Conta Pessoal</div>
       </a>
       <ul class="menu-sub">
-        <!-- Subitens podem ser adicionados aqui -->
+        <li class="menu-item">
+          <a href="{{ route('dashboard') }}" class="menu-link" >
+            <div class="text-truncate" data-i18n="Basic">Informações</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+            <div class="text-truncate" data-i18n="Basic">Segurança</div>
+          </a>
+        </li>
       </ul>
     </li>
   </ul>

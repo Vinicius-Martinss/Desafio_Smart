@@ -40,6 +40,16 @@
                                 <x-label for="cpf" value="CPF" />
                                 <x-input id="cpf" name="cpf" type="text" class="mt-1 block w-full" 
                                          value="{{ old('cpf', $user->cpf) }}" placeholder="000.000.000-00" />
+
+                                @if($user->cpf_validado)
+                                    <p class="text-green-600 text-sm mt-1">
+                                        ✓ CPF validado em {{ $user->cpf_ultima_verificacao->format('d/m/Y H:i') }}
+                                    </p>
+                                @elseif($user->cpf)
+                                    <p class="text-red-600 text-sm mt-1">
+                                        ✗ CPF não validado
+                                    </p>
+                                @endif
                             </div>
                             
                             <div>
@@ -142,6 +152,7 @@
                             <span id="success-text">Perfil atualizado com sucesso!</span>
                         </div>
                     </div>
+                </div>
             </div>
             @endif
 
@@ -181,7 +192,16 @@
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            // Funções de máscara robustas
+            // ===================================================================
+            // CONFIGURAÇÕES IMPORTANTES
+            // ===================================================================
+            const RECEITAWS_TOKEN = ''; // Coloque seu token premium aqui
+            const USE_TEST_CPFS = false; // Usar lista de CPFs de teste? (true para desenvolvimento)
+            
+
+            // ===================================================================
+            // FUNÇÕES DE MÁSCARAS
+            // ===================================================================
             function applyCPFMask(input) {
                 input.addEventListener('input', function() {
                     let value = this.value.replace(/\D/g, '');
@@ -232,7 +252,9 @@
                 });
             }
 
-            // Buscar CEP com tratamento de erro completo
+            // ===================================================================
+            // FUNÇÃO PARA BUSCAR CEP
+            // ===================================================================
             function fetchCEP(cep) {
                 if (cep.length !== 8) return;
                 
@@ -257,14 +279,161 @@
                     });
             }
 
+            // ===================================================================
+            // VALIDAÇÃO DE CPF
+            // ===================================================================
+            // Cache para validação de CPF
+            const cpfValidationCache = {};
+
+            // Função para validar CPF via algoritmo (local)
+            function validateCPFAlgorithm(cpf) {
+                if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+                
+                let sum = 0;
+                let remainder;
+                
+                // Validar primeiro dígito verificador
+                for (let i = 1; i <= 9; i++) {
+                    sum += parseInt(cpf.substring(i-1, i)) * (11 - i);
+                }
+                remainder = (sum * 10) % 11;
+                if (remainder === 10 || remainder === 11) remainder = 0;
+                if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+                
+                // Validar segundo dígito verificador
+                sum = 0;
+                for (let i = 1; i <= 10; i++) {
+                    sum += parseInt(cpf.substring(i-1, i)) * (12 - i);
+                }
+                remainder = (sum * 10) % 11;
+                if (remainder === 10 || remainder === 11) remainder = 0;
+                
+                return remainder === parseInt(cpf.substring(10, 11));
+            }
+
+            // Função principal para validar CPF
+            async function validateCPF(cpf) {
+                if (cpf.length !== 11) return false;
+
+                // 1. Verificar se é um CPF de teste válido
+                if (USE_TEST_CPFS && VALID_TEST_CPFS.includes(cpf)) {
+                    return true;
+                }
+                
+                // 2. Verificar cache
+                const cached = cpfValidationCache[cpf];
+                if (cached && (Date.now() - cached.timestamp) < 300000) {
+                    return cached.valid;
+                }
+                
+                // 3. Validar algoritmo localmente primeiro
+                const isValidLocal = validateCPFAlgorithm(cpf);
+                if (!isValidLocal) return false;
+
+                try {
+                    // Mostrar loading
+                    const loadingSwal = Swal.fire({
+                        title: 'Validando CPF...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+
+                    // Configurar timeout para evitar bloqueio
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000);
+                    
+                    // Montar URL com token se disponível
+                    const url = RECEITAWS_TOKEN 
+                        ? `https://receitaws.com.br/v1/cpf/${cpf}?token=${RECEITAWS_TOKEN}`
+                        : `https://receitaws.com.br/v1/cpf/${cpf}`;
+                    
+                    const response = await fetch(url, {
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Erro na API: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    const isValid = data.status === 'OK';
+                    
+                    await Swal.close();
+                    
+                    // Armazenar no cache
+                    cpfValidationCache[cpf] = {
+                        valid: isValid,
+                        timestamp: Date.now(),
+                        response: data
+                    };
+
+                    return isValid;
+                } catch (error) {
+                    await Swal.close();
+                    
+                    // Se a API falhar, retornar a validação local
+                    if (isValidLocal) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Validação Local',
+                            text: 'API indisponível. CPF validado localmente.',
+                            timer: 3000
+                        });
+                        return true;
+                    }
+                    
+                    console.error('Erro na validação do CPF:', error);
+                    return false;
+                }
+            }
+
+            // ===================================================================
+            // INICIALIZAÇÃO DA PÁGINA
+            // ===================================================================
             document.addEventListener('DOMContentLoaded', function() {
                 // Aplicar máscaras
                 const cpfInput = document.getElementById('cpf');
-                if (cpfInput) applyCPFMask(cpfInput);
-                
+                if (cpfInput) {
+                    applyCPFMask(cpfInput);
+                    
+                    // Adicionar evento de blur para validar CPF
+                    cpfInput.addEventListener('blur', async function() {
+                        const rawCpf = this.value.replace(/\D/g, '');
+                        if (rawCpf.length !== 11) return;
+
+                        const isValid = await validateCPF(rawCpf);
+                        
+                        if (isValid) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'CPF válido!',
+                                text: 'O CPF foi verificado com sucesso.',
+                                timer: 3000
+                            });
+                            
+                            // Atualizar status visual imediatamente
+                            const statusElement = this.nextElementSibling;
+                            if (statusElement) {
+                                statusElement.innerHTML = 
+                                    '✓ CPF validado (aguardando confirmação do servidor)';
+                                statusElement.classList.remove('text-red-600');
+                                statusElement.classList.add('text-green-600');
+                            }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'CPF inválido',
+                                text: 'Por favor, verifique o número do CPF.',
+                            });
+                        }
+                    });
+                }
+
                 const phoneInput = document.getElementById('telefone');
                 if (phoneInput) applyPhoneMask(phoneInput);
-                
+
                 const cepInput = document.getElementById('cep');
                 if (cepInput) applyCEPMask(cepInput);
 

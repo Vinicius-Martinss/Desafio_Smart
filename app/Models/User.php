@@ -98,4 +98,11 @@ class User extends Authenticatable
         
         return true;
     }
+
+
+    public function planos()
+    {
+        return $this->hasMany(Plano::class);
+    }
+    
 }

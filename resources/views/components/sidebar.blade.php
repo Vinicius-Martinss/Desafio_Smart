@@ -25,9 +25,9 @@
     
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
     <li class="menu-item">
-      <a href="{{ route('provedor.cadastro') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
+      <a href="{{ route('planos.index') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
+        <div class="text-truncate" data-i18n="Account Settings">Provedor</div>
       </a>
     </li>
 

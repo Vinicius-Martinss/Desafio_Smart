@@ -1,7 +1,7 @@
 @vite(['resources/js/app.js'])
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-  <div class="app-brand demo position-relative">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme collapsed">
+    <div class="app-brand demo position-relative">
     <a href="{{ route('dashboard') }}" class="app-brand-link d-flex align-items-center">
       <img src="{{ asset('img/Logo.png') }}" alt="Smart Telecom" class="d-block" style="height: 65px; width: auto; " />
     </a>    
@@ -17,13 +17,20 @@
     <!-- Seção Suporte - Serviços como link simples -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Suporte</span></li>
     <li class="menu-item">
+      <a href="{{ route('dashboard') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
+      </a>
+    </li>
+    
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
+    <li class="menu-item">
       <a href="{{ route('provedor.cadastro') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Cadastro</div>
+        <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
       </a>
     </li>
 
-    <!-- Removi a segunda entrada duplicada de Serviços -->
     
     <!-- Itens COM dropdown (mantidos) -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>

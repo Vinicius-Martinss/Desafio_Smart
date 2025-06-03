@@ -112,13 +112,59 @@
     }
     
     /* HEADER DE PÁGINA */
-    .page-header {
-      background: #fff;
-      padding: 1.5rem 2rem;
-      margin-bottom: 1.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
+ /* HEADER DE PÁGINA (RESPONSIVO) */
+.page-header {
+  background: #fff;
+  /* Use padding relativo para telas pequenas e médias */
+  padding: 1rem 1rem;          
+  /* Em telas grandes, aumente um pouco, mas sem exagerar */
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+
+  /* Deixe o tamanho automático mas limite a um máximo */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 1.5rem auto;
+
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+
+  /* Ajusta o texto para se comportar em responsividade */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Título dentro do header */
+.page-header h2,
+.page-header h4 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.2;
+}
+
+/* Se você tiver um breadcrumb ou subtítulo ao lado */
+.page-header .subheader {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* Em telas pequenas, centraliza tudo e empilha verticalmente */
+@media (max-width: 576px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .page-header h2,
+  .page-header h4 {
+    font-size: 1.25rem;
+  }
+  .page-header .subheader {
+    font-size: 0.875rem;
+  }
+}
     
     /* RESPONSIVIDADE */
     @media (max-width: 992px) {

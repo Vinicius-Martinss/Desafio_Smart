@@ -12,19 +12,30 @@ class CheckProfileComplete
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        
+
         if ($user) {
             $requiredFields = [
                 'cpf', 'data_nascimento', 'genero', 'telefone',
-                'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado'
+                'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado',
             ];
-            
+
             foreach ($requiredFields as $field) {
+                // Se algum campo obrigatório estiver vazio ou nulo
                 if (empty($user->$field)) {
-                    if (!$request->is('user/profile*') && !$request->is('logout')) {
-                        return redirect()->route('profile.show')
-                            ->with('warning', 'Cadastro de usuário incompleto. Por favor, atualize as informações do usuário para ter acesso à todos os recursos da nossa plataforma.');
+                    // Se NÃO estivermos na rota GET /profile/complete
+                    // nem na rota POST /profile/complete (que tem nome 'profile.complete.update')
+                    // nem na rota /logout, então redirecionamos para /profile/complete
+                    if (
+                        !$request->routeIs('profile.complete') 
+                        && !$request->routeIs('profile.complete.update')
+                        && !$request->is('logout')
+                    ) {
+                        return redirect()
+                            ->route('profile.complete')
+                            ->with('warning', 'Cadastro de usuário incompleto. Complete seu perfil para continuar.');
                     }
+                    // Se já estivermos em /profile/complete (GET ou POST),
+                    // deixamos passar para exibir/processar o formulário.
                     break;
                 }
             }

@@ -4,23 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    /**
+     * Exibe o formulário para “Completar Perfil” (GET /profile/complete).
+     */
     public function show()
     {
         $user = Auth::user();
-        return view('profile.show', compact('user'));
+
+        // Se o usuário já tiver todos os campos preenchidos, redireciona para /dashboard
+        if ($user->isProfileComplete()) {
+            return redirect()->route('dashboard');
+        }
+
+        return view('profile.complete', compact('user'));
     }
 
+    /**
+     * Processa o POST do formulário de completar perfil (POST /profile/complete).
+     */
     public function update(Request $request)
     {
         $user = Auth::user();
-        
-        // Validação
+
+        // 1) Validação dos campos
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'cpf' => [
@@ -72,13 +83,14 @@ class ProfileController extends Controller
         ]);
 
         if ($validator->fails()) {
+            // Se falhar, retorna JSON de erro (caso você esteja submetendo via AJAX)
             return response()->json([
                 'success' => false,
                 'errors' => $validator->errors()
             ], 422);
         }
 
-        // Atualizar usuário
+        // 2) Atualiza o usuário no banco
         $user->update([
             'name' => $request->name,
             'cpf' => $request->cpf,
@@ -92,14 +104,17 @@ class ProfileController extends Controller
             'bairro' => $request->bairro,
             'cidade' => $request->cidade,
             'estado' => $request->estado,
-            'cpf_validado' => true, // Marca como validado (confiamos na validação frontend)
+            'cpf_validado' => true,
             'cpf_ultima_verificacao' => now(),
         ]);
 
+        // 3) Após salvar, redireciona para /dashboard
+        //    (o middleware CheckProfileComplete vai deixar passar porque agora está completo)
         return response()->json([
-            'success' => true,
-            'message' => 'Perfil atualizado com sucesso!',
-            'redirect' => route('dashboard')
+            'success'  => true,
+            'message'  => 'Perfil atualizado com sucesso!',
+            'redirect' => route('dashboard'),
         ]);
+        
     }
 }

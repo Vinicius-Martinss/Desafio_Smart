@@ -11,82 +11,102 @@ class PlanoController extends Controller
 {
     use AuthorizesRequests;
 
+    /**
+     * Exibe a lista de planos do usuário.
+     */
     public function index()
     {
         $planos = Auth::user()->planos()->latest()->get();
         return view('planos.index', compact('planos'));
     }
 
+    /**
+     * Exibe o formulário de criação de um novo plano.
+     */
     public function create()
     {
         return view('planos.create');
     }
 
+    /**
+     * Armazena um novo plano no banco.
+     * Se for AJAX, retorna JSON; caso contrário, redirect normal.
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nome' => 'required|string|max:255',
+            'nome'       => 'required|string|max:255',
             'velocidade' => 'required|numeric|min:0',
-            'preco' => 'required|numeric|min:0',
-            'descricao' => 'nullable|string',
+            'preco'      => 'required|numeric|min:0',
+            'descricao'  => 'nullable|string',
         ]);
 
         $plano = Auth::user()->planos()->create($data);
 
-        // Retorno para AJAX (fetch)
         if ($request->expectsJson()) {
             return response()->json([
-                'success' => true,
-                'message' => 'Plano criado com sucesso!',
-                'redirect' => route('planos.index')
+                'success'  => true,
+                'message'  => 'Plano criado com sucesso!',
+                'redirect' => route('planos.index'),
             ]);
         }
 
-        // Redirecionamento normal
-        return redirect()->route('planos.index')->with('success', 'Plano criado com sucesso!');
+        return redirect()->route('planos.index')
+                         ->with('success', 'Plano criado com sucesso!');
     }
 
+    /**
+     * Exibe o formulário de edição para um plano específico.
+     * O método implicitly bind $plano a partir da rota.
+     */
     public function edit(Plano $plano)
     {
         $this->authorize('update', $plano);
         return view('planos.edit', compact('plano'));
     }
-
+    
+    /**
+     * Atualiza um plano existente.
+     * Se for AJAX, retorna JSON; caso contrário, redirect normal.
+     */
     public function update(Request $request, Plano $plano)
     {
         $this->authorize('update', $plano);
 
         $data = $request->validate([
-            'nome' => 'required|string|max:255',
+            'nome'       => 'required|string|max:255',
             'velocidade' => 'required|numeric|min:0',
-            'preco' => 'required|numeric|min:0',
-            'descricao' => 'nullable|string',
+            'preco'      => 'required|numeric|min:0',
+            'descricao'  => 'nullable|string',
         ]);
 
         $plano->update($data);
 
-        // Retorno para AJAX (opcional, se quiser aplicar no update futuramente)
         if ($request->expectsJson()) {
             return response()->json([
-                'success' => true,
-                'message' => 'Plano atualizado!',
-                'redirect' => route('planos.index')
+                'success'  => true,
+                'message'  => 'Plano atualizado com sucesso!',
+                'redirect' => route('planos.index'),
             ]);
         }
 
-        return redirect()->route('planos.index')->with('success', 'Plano atualizado!');
+        return redirect()->route('planos.index')
+                         ->with('success', 'Plano atualizado!');
     }
 
+    /**
+     * Remove um plano.
+     * Se for AJAX, retorna JSON; caso contrário, redirect normal.
+     */
     public function destroy(Plano $plano)
     {
         $this->authorize('delete', $plano);
         $plano->delete();
 
-        // Retorno para AJAX (opcional, se usar AJAX na exclusão)
         if (request()->expectsJson()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Plano removido.'
+                'message' => 'Plano removido com sucesso.',
             ]);
         }
 

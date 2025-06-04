@@ -135,5 +135,24 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 @endpush
+@push('styles')
+<style>
 
+:root {
+  --fundo: #EBEBEB;
+  --detalhe: #3AB6C9;
+  --cor-acento: #464646;
+  --texto:#131313;
+}
+    input:focus, textarea:focus, select:focus {
+        border-color: var(--detalhe)!important; 
+        border: 1px solid ;
+    }
+
+    .form-control.is-invalid:focus {
+        border-color: var(--detalhe)!important;
+        border: 1px solid ;
+    }
+</style>
+@endpush
 </x-app-layout>

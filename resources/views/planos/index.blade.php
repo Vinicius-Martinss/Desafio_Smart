@@ -15,10 +15,6 @@
             @if ($planos->isEmpty())
                 <div class="text-center p-5">
                     <h4 class="mb-3">Nenhum plano cadastrado ainda</h4>
-                    <p>Você ainda não criou nenhum plano. Clique no botão abaixo para começar.</p>
-                    <a href="{{ route('planos.create') }}" class="btn btn-success">
-                        <i class="bx bx-plus"></i> Criar meu primeiro plano
-                    </a>
                 </div>
             @else
                 <div class="table-responsive">

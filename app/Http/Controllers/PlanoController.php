@@ -16,7 +16,12 @@ class PlanoController extends Controller
      */
     public function index()
     {
-        $planos = Auth::user()->planos()->latest()->get();
+        $timeId = Auth::user()->current_team_id;  // pega o time atual
+
+        // Aqui vamos garantir que a relação planos() no usuário já leva em conta team_id,
+        // mas para garantir, podemos usar o where:
+        $planos = Auth::user()->planos()->where('team_id', $timeId)->latest()->get();
+    
         return view('planos.index', compact('planos'));
     }
 
@@ -40,8 +45,12 @@ class PlanoController extends Controller
             'preco'      => 'required|numeric|min:0',
             'descricao'  => 'nullable|string',
         ]);
-
-        $plano = Auth::user()->planos()->create($data);
+    
+        // Adicione o team_id no array de dados:
+        $data['user_id'] = Auth::id();
+        $data['team_id'] = Auth::user()->current_team_id;
+        
+        Auth::user()->planos()->create($data);
 
         if ($request->expectsJson()) {
             return response()->json([

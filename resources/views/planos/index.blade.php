@@ -129,7 +129,7 @@
                 const url = $(this).data('url');
                 const nome = $(this).data('nome');
 
-                const result = await Swal.fire({
+                const result = a    ({
                     title: `Excluir plano "${nome}"?`,
                     text: "Essa ação não poderá ser desfeita.",
                     icon: 'warning',

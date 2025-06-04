@@ -15,23 +15,31 @@
 
   <ul class="menu-inner py-1">
     <!-- Seção Suporte - Serviços como link simples -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Suporte</span></li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Home</span></li>
     <li class="menu-item">
-      <a href="{{ route('dashboard') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
+      <a href="{{ route('dashboard') }}" class="menu-link"> 
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
       </a>
     </li>
-    
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
+
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Serviços</span></li>
     <li class="menu-item">
-      <a href="{{ route('planos.index') }}" class="menu-link"> <!-- Removido menu-toggle e colocado link real -->
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Provedor</div>
+        <div class="text-truncate" data-i18n="Account Settings">Serviços</div>
       </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="{{ route('planos.index') }}" class="menu-link" >
+            <div class="text-truncate" data-i18n="Basic">Planos</div>
+          </a>
+        </li>
+
+      </ul>
     </li>
 
-    
+
     <!-- Itens COM dropdown (mantidos) -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
     <li class="menu-item active open">
@@ -41,13 +49,18 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="auth-login-basic.html" class="menu-link" target="_blank">
+          <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" class="menu-link">
             <div class="text-truncate" data-i18n="Basic">Informações</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="auth-register-basic.html" class="menu-link" target="_blank">
+          <a href="{{ route('teams.create') }}" class="menu-link" >
             <div class="text-truncate" data-i18n="Basic">Teams</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="{{ route('api-tokens.index') }}" class="menu-link">
+            <div class="text-truncate" data-i18n="Basic"> API Tokens</div>
           </a>
         </li>
       </ul>
@@ -61,15 +74,11 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="{{ route('dashboard') }}" class="menu-link" >
+          <a href="{{ route('profile.show') }}" class="menu-link" >
             <div class="text-truncate" data-i18n="Basic">Informações</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
-            <div class="text-truncate" data-i18n="Basic">Segurança</div>
-          </a>
-        </li>
+
       </ul>
     </li>
   </ul>

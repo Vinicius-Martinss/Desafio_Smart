@@ -215,7 +215,7 @@
       </div>
 
       <!-- Footer -->
-      <x-footer />
+      <x-footer-app />
     </div>
   </div>
 

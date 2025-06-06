@@ -68,6 +68,14 @@
       </ul>
     </li>
 
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Contratos</span></li>
+    <li class="menu-item">
+      <a href="{{ route('contrato.form') }}" class="menu-link"> 
+        <i class="menu-icon tf-icons bx bx-file mr-2"></i>
+        <div class="text-truncate" data-i18n="Account Settings">Gerar Contrato</div>
+      </a>
+    </li>
+
 
     <!-- Itens COM dropdown (mantidos) -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>

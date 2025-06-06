@@ -45,6 +45,7 @@ class ProfileController extends Controller
                     }
                 }
             ],
+            'nome_empresa'  => 'required|string|max:255',
             'data_nascimento' => 'required|date_format:Y-m-d',
             'genero' => 'required|in:M,F,O',
             'telefone' => [
@@ -105,6 +106,7 @@ class ProfileController extends Controller
             'cidade' => $request->cidade,
             'estado' => $request->estado,
             'cpf_validado' => true,
+            'nome_empresa', $request->nome_empresa,
             'cpf_ultima_verificacao' => now(),
         ]);
 

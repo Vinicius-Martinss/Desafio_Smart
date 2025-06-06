@@ -1,65 +1,218 @@
-<<<<<<< HEAD
-# Desafio_Smart
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🚀 Sistema de Gerenciamento de Provedores de Internet
+<div align="center"> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100"> <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="Vue.js" width="85"> <img src="https://sweetalert2.github.io/images/SweetAlert2.png" alt="SweetAlert2" width="120"> </div>
+🌟 Visão Geral
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema completo para gerenciamento de provedores de internet com autenticação por times, dashboard administrativo e geração de contratos profissionais.
 
-## About Laravel
+Laravel Version
+PHP Version
+License
+✨ Recursos Principais
+Funcionalidade	Descrição
+👥 Autenticação por Times	Sistema de permissões com Owner/Membro/Convidado
+📊 Dashboard Administrativo	Estatísticas de usuários e planos ativos
+📝 Geração de Contratos	Exportação para .docx com PHPWord
+📱 API Integradas	ViaCEP e ReceitaWS para autopreenchimento
+🧩 Formulários Dinâmicos	Validação em tempo real com AJAX
+📋 Tabelas Inteligentes	DataTables com exportação CSV/PDF
+🛠️ Tecnologias e Bibliotecas
+📚 Bibliotecas Frontend
+bash
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+npm install sweetalert2 inputmask
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Biblioteca	Função	Documentação
+SweetAlert2	Notificações e alertas interativos	Docs
+Inputmask	Máscaras para campos de formulário	Docs
+DataTables	Tabelas interativas com filtros	Docs
+📦 Bibliotecas Backend
+bash
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+composer require phpoffice/phpword
 
-## Learning Laravel
+Biblioteca	Função	Documentação
+PHPWord	Geração de documentos .docx	Docs
+Laravel Jetstream	Autenticação com Teams	Docs
+🔌 APIs Integradas
+API	Função	Documentação
+ViaCEP	Busca de endereços por CEP	Docs
+ReceitaWS	Validação de CNPJ e dados de empresas	Docs
+📦 Pré-requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    PHP 8.1+
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    Composer 2.5+
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    Node.js 18+
 
-## Laravel Sponsors
+    Banco de dados (MySQL/PostgreSQL/SQLite)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+🚀 Instalação Passo a Passo
+bash
 
-### Premium Partners
+# Clone o repositório
+git clone https://github.com/seu-usuario/projeto-smart.git
+cd projeto-smart
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Instale as dependências do PHP
+composer install
 
-## Contributing
+# Instale as dependências do JavaScript
+npm install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Instale bibliotecas adicionais
+npm install sweetalert2 inputmask
+composer require phpoffice/phpword
 
-## Code of Conduct
+# Configure o ambiente
+cp .env.example .env
+php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Configure o banco de dados no arquivo .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=smart_db
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Security Vulnerabilities
+# Execute as migrações com dados de exemplo
+php artisan migrate --seed
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Compile os assets
+npm run dev
 
-## License
+# Inicie o servidor
+php artisan serve
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> origin/master
+Acesse o sistema em: http://localhost:8000
+👤 Credenciais de Teste
+
+Administrador:
+
+    Email: admin@smart.com
+
+    Senha: password
+
+Provedor:
+
+    Email: provider@smart.com
+
+    Senha: password
+
+🖥️ Uso das Bibliotecas
+SweetAlert2 (Notificações)
+javascript
+
+// Exemplo de uso
+Swal.fire({
+  title: 'Sucesso!',
+  text: 'Operação realizada com sucesso',
+  icon: 'success',
+  confirmButtonText: 'OK'
+});
+
+Inputmask (Máscaras)
+javascript
+
+// Exemplo para CNPJ
+Inputmask('99.999.999/9999-99').mask('#cnpj');
+
+// Exemplo para CEP
+Inputmask('99999-999').mask('#cep');
+
+PHPWord (Contratos)
+php
+
+use PhpOffice\PhpWord\PhpWord;
+
+public function generateContract(User $user)
+{
+    $phpWord = new PhpWord();
+    $section = $phpWord->addSection();
+    
+    $section->addText("CONTRATO DE PRESTAÇÃO DE SERVIÇOS", ['bold' => true]);
+    $section->addText("Contratante: {$user->company_name}");
+    $section->addText("CNPJ: {$user->cnpj}");
+    
+    // ... conteúdo do contrato
+    
+    $filename = "contrato-{$user->id}.docx";
+    $phpWord->save($filename, 'Word2007', true);
+    
+    return response()->download($filename);
+}
+
+📂 Estrutura de Diretórios
+
+app/
+├── Http/Controllers/     # Controladores
+├── Models/               # Modelos Eloquent
+├── Providers/            # Service Providers
+database/
+├── factories/            # Factories
+├── migrations/           # Migrations
+├── seeders/              # Seeders
+resources/
+├── js/                   # JavaScript/Vue components
+├── views/                # Blade templates
+routes/
+├── web.php               # Rotas principais
+
+🔌 Integração com APIs Externas
+ViaCEP
+javascript
+
+// resources/js/components/AddressForm.vue
+fetch(`https://viacep.com.br/ws/${cep}/json/`)
+  .then(response => response.json())
+  .then(data => {
+    this.form.street = data.logradouro;
+    this.form.neighborhood = data.bairro;
+    this.form.city = data.localidade;
+    this.form.state = data.uf;
+  });
+
+ReceitaWS
+php
+
+// app/Http/Controllers/ProviderController.php
+public function validateCnpj($cnpj)
+{
+    $response = Http::get("https://www.receitaws.com.br/v1/cnpj/{$cnpj}");
+    
+    if ($response->successful() && $response['status'] === 'OK') {
+        return response()->json([
+            'company_name' => $response['nome'],
+            'trade_name' => $response['fantasia']
+        ]);
+    }
+    
+    return response()->json(['error' => 'CNPJ inválido'], 400);
+}
+
+🤝 Contribuição
+
+    Faça um fork do projeto
+
+    Crie uma branch (git checkout -b feature/nova-funcionalidade)
+
+    Commit suas alterações (git commit -m 'Adiciona nova funcionalidade')
+
+    Push para a branch (git push origin feature/nova-funcionalidade)
+
+    Abra um Pull Request
+
+📜 Licença
+
+Este projeto está licenciado sob a Licença MIT.
+📬 Contato
+
+Para suporte ou dúvidas, entre em contato:
+
+    Email: contato@smarttelecom.com.br
+
+    GitHub: @seu-usuario
+
+<div align="center"> <p>Desenvolvido com ❤️ usando Laravel e Vue.js</p> <img src="https://laravel.com/img/logotype.min.svg" alt="Laravel" width="200"> </div>
+New chat

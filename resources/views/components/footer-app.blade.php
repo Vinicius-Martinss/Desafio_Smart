@@ -1,26 +1,36 @@
+<!-- FontAwesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papYI9hzzsR3g9tvz9+jrHT8...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Google Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 <footer class="smart-footer">
   <div class="footer-main">
     <div class="footer-brand">
-      <img src="{{ asset('img/Logo.png') }}" alt="{{ config('app.name') }}" />
-      <span>Smart Telecom</span>
+      <img src="{{ asset('img/Logo.png') }}" alt="Smart Telecom">
+      <span class="brand-name">Smart Telecom</span>
     </div>
+    
     <div class="footer-social">
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
+
     <div class="footer-contact">
       <p><i class="material-icons">email</i> smart_telecom@gmail.com</p>
       <p><i class="material-icons">phone</i> (85) 99152-7388</p>
       <p><i class="material-icons">phone</i> (85) 99220-3010</p>
     </div>
   </div>
+
   <div class="footer-bottom">
     <p>&copy; {{ date('Y') }} Smart Telecom. Todos os direitos reservados.</p>
   </div>
 </footer>
+
 
 <style>
   :root {

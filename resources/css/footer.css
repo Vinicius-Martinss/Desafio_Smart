@@ -1,215 +1,152 @@
-
 :root {
   --fundo: #EBEBEB;
   --detalhe: #3AB6C9;
   --cor-acento: #464646;
-  --texto:#131313;
+  --texto: #131313;
 }
 
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; 
-}
-
-  /* Classe principal que envolve TODO o footer */
+/* Footer principal */
 .smart-footer {
   background: var(--texto);
   color: var(--fundo);
-  padding: 60px 0 0; 
-  position: relative;
-  overflow: hidden; 
   border-radius: 50px 50px 0 0;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 10px;
+  padding: 60px 20px 0;
 }
 
-  /* Container que organiza as colunas do footer */
-   /* Define o layout grid responsivo */
-  .footer-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px; 
-    align-items: start; 
-  }
-
-  /* Container do logo e nome da empresa */
-  .footer-logo img {
-    height: 40px;
-    margin-bottom: 20px;
-  }
-  
-  /* Primeira coluna - Logo e sobre a empresa */
-  .footer-about p {
-    color: var(--fundo);
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-  
-  /* Estiliza a área dos ícones sociais */
-  .footer-social a {
-    display: inline-block;
-    margin-right: 15px;
-    color: var(--fundo);
-    transition: all 0.3s ease;
-  }
-  
-  /* Estiliza o hover dos ícones sociais */
-  .footer-social a:hover {
-    color: var(--detalhe);
-  }
-  
-/* Estiliza TODOS os títulos das seções (h3) */
-  .footer-title {
-    color: var(--fundo);
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 15px 0; /* Reset completo das margens */
-    padding: 0 0 10px 0; /* Reset completo dos paddings */
-    position: relative;
-    line-height: 1.2; /* Altura de linha consistente */
-  }
-  
-  .footer-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--detalhe);
-
-  }
-  
-  .footer-links ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: 8px;
-  }
-  
-  .footer-links a {
-    color: var(--fundo);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    display: block;
-  }
-  
-  .footer-links a:hover {
-    color: var(--detalhe);
-    padding-left: 5px;
-  }
-  
-  .footer-contact p {
-    color: var(--fundo);
-    margin-bottom: 15px;
-    font-size: 14px;
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  
-  .footer-bottom {
-    margin: 0 !important;      
-    padding: 10px 0 !important; 
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: var(--texto);
-    text-align: center;
-    width: 100%;
-    grid-column: 1 / -1;
-  }
-  
-  .footer-bottom p {
-    color: var(--fundo);
-    font-size: 14px;
-    margin: 0;
- 
-  }
-  
-  /* Ícones (usando Material Icons) */
-  .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-  }
-  .footer-contact {
-    position: relative;
-    margin-bottom: 15px;
-    padding-top: 0px;
-}
-
-.footer-contact h3 {
-    margin-bottom: 20px;
-}
-
-.contact-section {
-    padding: 10px 0;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.contact-section:last-child {
-    border-bottom: none;
-}
-
-.contact-section h4 {
-    color: var(--detalhe);
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.contact-item i {
-    margin-right: 10px;
-    color: var(--detalhe);
-    font-size: 18px;
-    margin-top: 2px;
-}
-
-.contact-item p {
-    margin: 0;
-    font-size: 14px;
-}
-
-.footer-bottom  {
+/* Container interno com grid */
+.footer-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 30px; /* Ajuste o espaço entre as colunas */
 }
 
-
-
+/* Estilo das colunas */
 .footer-about,
 .footer-links,
 .footer-contact {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo */
+.footer-logo img {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+/* Texto sobre */
+.footer-about p {
+  color: var(--fundo);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Social icons */
+.footer-social a {
+  display: inline-block;
+  margin-right: 15px;
+  color: var(--fundo);
+  transition: 0.3s;
+}
+.footer-social a:hover {
+  color: var(--detalhe);
+}
+
+/* Títulos */
+
+.footer-title {
+  display: inline-block !important;
+  color: var(--fundo);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 10px;
+}
+.footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--detalhe);
+}
+/* Links */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links li {
+  margin-bottom: 8px;
+}
+.footer-links a {
+  color: var(--fundo);
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  transition: 0.3s;
+}
+.footer-links a:hover {
+  color: var(--detalhe);
+  padding-left: 5px;
+}
+
+/* Contato */
+.footer-contact {
+  display: flex; /* Alterado para flex */
+  justify-content: space-between; /* Para que Endereço e Contato fiquem lado a lado */
+  gap: 20px; /* Espaçamento entre as seções de contato */
+}
+
+.contact-section {
+  flex: 1; /* Para que as seções ocupem espaço igual */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.contact-item i {
+  margin-right: 10px;
+  color: var(--detalhe);
+  font-size: 18px;
+}
+
+/* Rodapé final */
+.footer-bottom {
+  text-align: center;
+  padding: 15px 20px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--texto);
+}
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--fundo);
+}
+
+/* Ícones do Google */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  .footer-contact {
+      flex-direction: column; /* Colunas empilhadas em telas menores */
+  }
 }

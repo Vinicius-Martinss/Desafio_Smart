@@ -24,9 +24,22 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {{-- Nome --}}
                             <div>
-                                <x-label for="name" value="{{ __('Name') }}" />
+                                <x-label for="name" value="{{ __('Nome completo') }}" />
                                 <x-input id="name" name="name" type="text" class="mt-1 block w-full"
                                          value="{{ old('name', $user->name) }}" autofocus />
+                            </div>
+                            <div class="space-y-1 mb-4">
+                                <label for="nome_empresa" class="block text-sm font-medium text-gray-700">Nome da Empresa</label>
+                                <input type="text"
+                                       id="nome_empresa"
+                                       name="nome_empresa"
+                                       value="{{ old('nome_empresa', $user->nome_empresa) }}"
+                                       required
+                                       class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300"
+                                       placeholder="Ex.: Telecom ABC Ltda">
+                                @error('nome_empresa')
+                                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             {{-- CPF --}}

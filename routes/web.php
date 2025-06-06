@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Middleware\CheckProfileComplete;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ContratoController;
 
 
 // Rota pública (Welcome)
@@ -26,6 +27,11 @@ Route::middleware(['auth:sanctum', 'verified', CheckProfileComplete::class])->gr
     // Dashboard do usuário comum
     Route::get('/dashboard', [ProviderController::class, 'dashboard'])
          ->name('dashboard');
+          //Rotas para gerar contrato
+         Route::get('/contrato/gerar', [ContratoController::class, 'form'])
+         ->name('contrato.form');
+          Route::post('/contrato/gerar', [ContratoController::class, 'gerar'])
+         ->name('contrato.gerar');
 
     // Rotas estáticas
     Route::view('/servicos', 'servicos')->name('servicos');

@@ -7,12 +7,6 @@
           <i class="fas fa-users text-blue-600"></i> Gerenciar Usuários
         </h2>
 
-        {{-- Mensagem de sucesso --}}
-        @if(session('success'))
-          <div class="alert alert-success mb-4">
-            {{ session('success') }}
-          </div>
-        @endif
 
         @if($users->isEmpty())
           <div class="text-center py-5">
@@ -142,52 +136,50 @@
         });
 
         $(document).on('click', '.btn-delete-user', async function () {
-          const url = $(this).data('url');
-          const nome = $(this).data('nome');
+  const url = $(this).data('url');
+  const nome = $(this).data('nome');
 
-          const result = await Swal.fire({
-            title: `Excluir usuário "${nome}"?`,
-            text: "Esta ação não poderá ser desfeita.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'Sim, excluir!',
-            cancelButtonText: 'Cancelar'
-          });
+  const result = await Swal.fire({
+    title: `Excluir usuário "${nome}"?`,
+    text: "Esta ação não poderá ser desfeita.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#e3342f',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Sim, excluir!',
+    cancelButtonText: 'Cancelar'
+  });
 
-          if (!result.isConfirmed) return;
+  if (result.isConfirmed) {
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          'Accept': 'application/json'
+        }
+      });
 
-          try {
-            const response = await fetch(url, {
-              method: 'DELETE',
-              headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json'
-              }
-            });
+      const data = await response.json();
 
-            const data = await response.json();
-
-            if (!response.ok || !data.success) {
-              throw new Error(data.message || 'Erro ao excluir');
-            }
-
-            await Swal.fire({
-              icon: 'success',
-              title: 'Usuário excluído com sucesso!',
-              timer: 1500,
-              showConfirmButton: false
-            });
-
-            $('#tabela-usuarios').DataTable()
-              .row($(this).parents('tr'))
-              .remove()
-              .draw(false);
-          } catch (err) {
-            console.error(err);
-            Swal.fire('Erro', err.message || 'Falha ao excluir usuário', 'error');
-          }
+      if (data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: data.message,
+          timer: 2000,
+          showConfirmButton: false
+        }).then(() => {
+          location.reload(); // recarrega a tabela
         });
+      } else {
+        Swal.fire('Erro', data.message || 'Erro ao excluir o usuário.', 'error');
+      }
+    } catch (error) {
+      Swal.fire('Erro', 'Não foi possível excluir o usuário.', 'error');
+    }
+  }
+});
       });
     </script>
   @endpush

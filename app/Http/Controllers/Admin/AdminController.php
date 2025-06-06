@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    /**
-     * 1. Dashboard do Admin: exibe dois cards (totalUsers e activePlans).
-     */
     public function dashboard()
     {
         $totalUsers  = User::count();
@@ -20,27 +17,23 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('totalUsers', 'activePlans'));
     }
 
-    /**
-     * 2.1 Index de Usuários: traz todos os usuários do banco.
-     */
     public function indexUsers()
     {
         $users = User::orderBy('id')->get();
         return view('admin.users.index', compact('users'));
     }
 
-    /**
-     * 2.2 Exibe formulário de edição de usuário (já existia).
-     */
-    public function editUser(User $user)
+    public function editUser (User $user)
     {
         return view('admin.users.edit', compact('user'));
     }
 
     /**
-     * 2.3 Atualiza usuário (form Blade tradicional).
+     * 2.3 Atualiza usuário (via AJAX).
+     * Retorna JSON para o JavaScript (SweetAlert).
      */
-    public function updateUser(Request $request, User $user)
+
+    public function updateUser (Request $request, User $user)
     {
         $data = $request->validate([
             'name'            => 'required|string|max:255',
@@ -59,25 +52,36 @@ class AdminController extends Controller
             'estado'          => 'nullable|string|max:2',
             'password'        => 'nullable|string|min:6|confirmed', 
             'photo'           => 'nullable|image|max:2048',
+            'nome_empresa'  => 'nullable|string|max:255'
         ]);
     
-        // Se carregou nova foto, armazena e atualiza o campo
-        if ($request->hasFile('photo')) {
-            // Remove foto antiga (opcional)
-            if ($user->profile_photo_path) {
-                \Storage::disk('public')->delete($user->profile_photo_path);
+        try {
+            if ($request->hasFile('photo')) {
+                // Deletar a foto antiga se existir
+                if ($user->profile_photo_path) {
+                    \Storage::disk('public')->delete($user->profile_photo_path);
+                }
+                // Armazenar a nova foto
+                $data['profile_photo_path'] = $request->file('photo')->store('profile-photos', 'public');
             }
-            $data['profile_photo_path'] = $request->file('photo')->store('profile-photos', 'public');
-        }
     
-        // Se informou senha nova, faz hash
-        if ($request->filled('password')) {
-            $data['password'] = \Hash::make($request->password);
-        } else {
-            unset($data['password']);
-        }
+            if ($request->filled('password')) {
+                $data['password'] = \Hash::make($request->password);
+            } else {
+                unset($data['password']);
+            }
     
-        $user->update($data);
+            $user->update($data);
+    
+        } catch (\Exception $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro ao atualizar usuário: ' . $e->getMessage(),
+                ], 500);
+            }
+            return back()->withErrors('Erro ao atualizar usuário: ' . $e->getMessage());
+        }
     
         if ($request->expectsJson()) {
             return response()->json([
@@ -91,13 +95,17 @@ class AdminController extends Controller
     }
     
     /**
-     * 2.4 Exclui usuário (form Blade tradicional).
+     * 2.4 Exclui usuário (via AJAX).
+     * Retorna JSON para o JavaScript (SweetAlert).
      */
-    public function destroyUser(User $user)
+    public function destroyUser (User $user)
     {
         $user->delete();
-        return redirect()->route('admin.usuarios.index')
-                         ->with('success', 'Usuário excluído com sucesso.');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Usuário excluído com sucesso.',
+        ]);
     }
 
     /**

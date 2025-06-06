@@ -45,7 +45,9 @@ class User extends Authenticatable
         'bairro',
         'cidade',
         'estado',
-        'is_admin'
+        'is_admin',
+        'profile_photo_path',
+        'nome_empresa', 
     ];
 
     /**

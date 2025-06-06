@@ -20,3 +20,159 @@
     display: none;
 }
 
+    /* RESET DE ESTILOS */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'Public Sans', sans-serif;
+        background-color: #f5f5f9;
+        overflow-x: hidden;
+      }
+      
+      /* LAYOUT PRINCIPAL */
+      .app-container {
+        display: flex;
+        min-height: 100vh;
+      }
+      
+      /* SIDEBAR */
+      .app-sidebar {
+        width: 80px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        background: #fff;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        transition: transform 0.4s ease, width 0.4s ease;
+        overflow: hidden;
+      }
+      
+      .app-sidebar.expanded {
+        width: 260px;
+        transform: translateX(0);
+        box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+      }
+      
+      /* ANIMAÇÃO DE ABERTURA */
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      .app-sidebar.expanded {
+        animation: slideIn 0.3s ease forwards;
+      }
+      
+      /* CONTEÚDO PRINCIPAL */
+      .main-content {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: none;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 2rem;
+      }
+      
+      /* NAVBAR */
+      .app-navbar {
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        height: 64px;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 900;
+      }
+      
+      /* HEADER DE PÁGINA */
+   /* HEADER DE PÁGINA (RESPONSIVO) */
+  .page-header {
+    background: #fff;
+    /* Use padding relativo para telas pequenas e médias */
+    padding: 1rem 1rem;          
+    /* Em telas grandes, aumente um pouco, mas sem exagerar */
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
+  
+    /* Deixe o tamanho automático mas limite a um máximo */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 1.5rem auto;
+  
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  
+    /* Ajusta o texto para se comportar em responsividade */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Título dentro do header */
+  .page-header h2,
+  .page-header h4 {
+    margin: 0;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    line-height: 1.2;
+  }
+  
+  /* Se você tiver um breadcrumb ou subtítulo ao lado */
+  .page-header .subheader {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    color: #666;
+    margin-top: 0.25rem;
+  }
+  
+  /* Em telas pequenas, centraliza tudo e empilha verticalmente */
+  @media (max-width: 576px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+    .page-header h2,
+    .page-header h4 {
+      font-size: 1.25rem;
+    }
+    .page-header .subheader {
+      font-size: 0.875rem;
+    }
+  }
+      
+      /* RESPONSIVIDADE */
+      @media (max-width: 992px) {
+        .main-content {
+          margin-left: 0;
+          width: 100%;
+        }
+        
+        .app-sidebar {
+          transform: translateX(-100%);
+        }
+        
+        .app-sidebar.expanded {
+          width: 260px;
+          transform: translateX(0);
+          box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+        }
+      }
+

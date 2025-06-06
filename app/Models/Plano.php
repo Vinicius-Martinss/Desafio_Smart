@@ -15,7 +15,8 @@ class Plano extends Model
         'preco',
         'descricao',
         'user_id',
-        'team_id' // <--- Adicione isso
+        'status',
+        'team_id'
     ];
 
     public function user()

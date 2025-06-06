@@ -44,6 +44,7 @@ class PlanoController extends Controller
             'velocidade' => 'required|numeric|min:0',
             'preco'      => 'required|numeric|min:0',
             'descricao'  => 'nullable|string',
+            'status' => 'required|in:ativo,inativo'
         ]);
     
         // Adicione o team_id no array de dados:
@@ -87,6 +88,7 @@ class PlanoController extends Controller
             'velocidade' => 'required|numeric|min:0',
             'preco'      => 'required|numeric|min:0',
             'descricao'  => 'nullable|string',
+            'status' => 'required|in:ativo,inativo'
         ]);
 
         $plano->update($data);

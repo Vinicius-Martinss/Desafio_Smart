@@ -44,7 +44,8 @@ class User extends Authenticatable
         'complemento',
         'bairro',
         'cidade',
-        'estado'
+        'estado',
+        'is_admin'
     ];
 
     /**
@@ -104,5 +105,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Plano::class);
     }
+
+     // Casts de campos
+     protected $casts = [
+        'email_verified_at' => 'datetime',
+        'data_nascimento'   => 'date',
+        'is_admin'          => 'boolean'
+    ];
+
+    
     
 }

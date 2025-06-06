@@ -18,15 +18,44 @@
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Home</span></li>
     <li class="menu-item">
       <a href="{{ route('dashboard') }}" class="menu-link"> 
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
+        <i class="menu-icon tf-icons bx bx-home"></i>
+        <div class="text-truncate" data-i18n="Account Settings">Seja Bem vindo</div>
       </a>
     </li>
+
+    @if(auth()->user() && auth()->user()->is_admin)
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Administração</span></li>
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons	bx bx-cog"></i>
+        <div class="text-truncate" data-i18n="Account Settings">Administração</div>
+      </a>
+      <ul class="menu-sub">
+
+        <li class="menu-item">
+          <a href="{{ route('admin.dashboard') }}" class="menu-link">
+            <div class="text-truncate" data-i18n="Account Settings">Dashboard</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a href="{{ route('admin.usuarios.index') }}" class="menu-link" >
+            <div class="text-truncate" data-i18n="Basic">Usuários</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="{{ route('admin.planos.index') }}" class="menu-link" >
+            <div class="text-truncate" data-i18n="Basic">Planos</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    @endif
 
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Serviços</span></li>
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <i class="menu-icon tf-icons bx bx-wifi"></i>
         <div class="text-truncate" data-i18n="Account Settings">Serviços</div>
       </a>
       <ul class="menu-sub">
@@ -42,10 +71,10 @@
 
     <!-- Itens COM dropdown (mantidos) -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Configurações</span></li>
-    <li class="menu-item active open">
+    <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-        <div class="text-truncate" data-i18n="Authentications">Conta Empresa</div>
+        <i class="menu-icon tf-icons 	bx bx-buildings"></i>
+        <div class="text-truncate" data-i18n="Account Settings">Conta Empresa</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
@@ -69,7 +98,7 @@
     <!-- Outro item COM dropdown -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <i class="menu-icon tf-icons bx bx-user"></i>
         <div class="text-truncate" data-i18n="Account Settings">Conta Pessoal</div>
       </a>
       <ul class="menu-sub">

@@ -68,7 +68,7 @@ id="layout-navbar">
         <li>
           <a class="dropdown-item" href="{{ route('profile.show') }}">
             <i class="icon-base bx bx-user icon-md me-3"></i>
-            <span>{{ __('Profile') }}</span>
+            <span>{{ __('Perfil') }}</span>
           </a>
         </li>
         
@@ -93,7 +93,7 @@ id="layout-navbar">
           <li>
             <a class="dropdown-item" href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
               <i class="icon-base bx bx-group icon-md me-3"></i>
-              <span>{{ __('Team Settings') }}</span>
+              <span>{{ __('Team configurações') }}</span>
             </a>
           </li>
           
@@ -101,7 +101,7 @@ id="layout-navbar">
             <li>
               <a class="dropdown-item" href="{{ route('teams.create') }}">
                 <i class="icon-base bx bx-plus-circle icon-md me-3"></i>
-                <span>{{ __('Create New Team') }}</span>
+                <span>{{ __('Criar novo Team') }}</span>
               </a>
             </li>
           @endcan
@@ -143,13 +143,13 @@ id="layout-navbar">
             @csrf
             <a class="dropdown-item" href="{{ route('logout') }}" @click.prevent="$root.submit();">
               <i class="icon-base bx bx-power-off icon-md me-3"></i>
-              <span>{{ __('Log Out') }}</span>
+              <span>{{ __('Sair') }}</span>
             </a>
           </form>
         </li>
       </ul>
     </li>
-    <!--/ User Dropdown -->
+  
   </ul>
 </div>
 </nav>

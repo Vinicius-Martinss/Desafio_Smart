@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/sobre', function () {
+     return view('sobre');
+ })->name('sobre');
 // Rotas autenticadas + CheckProfileComplete
 Route::middleware(['auth:sanctum', 'verified', CheckProfileComplete::class])->group(function () {
 
@@ -33,10 +36,7 @@ Route::middleware(['auth:sanctum', 'verified', CheckProfileComplete::class])->gr
           Route::post('/contrato/gerar', [ContratoController::class, 'gerar'])
          ->name('contrato.gerar');
 
-    // Rotas estáticas
-    Route::view('/servicos', 'servicos')->name('servicos');
-    Route::view('/about', 'about')->name('about');
-    Route::view('/contact', 'contact')->name('contact');
+
 
     // Rotas de Plano (area do provedor, AJAX já em PlanoController)
     Route::get('planos', [PlanoController::class, 'index'])->name('planos.index');

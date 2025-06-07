@@ -26,21 +26,20 @@
             <h3 class="footer-title">Links Rápidos</h3>
             <ul>
                 <li><a href="{{ route('home') }}">Início</a></li>
-                <li><a href="{{ route('servicos') }}">Serviços</a></li>
-                <li><a href="{{ route('about') }}">Sobre Nós</a></li>
-                <li><a href="{{ route('contact') }}">Contato</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="{{ route('sobre') }}">Sobre Nós</a></li>
             </ul>
         </div>
         
         <div class="footer-links">
             <h3 class="footer-title">Nossos Serviços</h3>
             <ul>
-                <li><a href="{{ route('servicos') }}">Consultoria CREA</a></li>
-                <li><a href="{{ route('servicos') }}">Consultoria Anatel</a></li>
-                <li><a href="{{ route('servicos') }}">Projetos de Redes Ópticas (FTTH)</a></li>
-                <li><a href="{{ route('servicos') }}">Consultoria ASN</a></li>
-                <li><a href="{{ route('servicos') }}">Compartilhamento de Portes</a></li>
-                <li><a href="{{ route('servicos') }}">Configuração de Equipamentos</a></li>
+                <li><a href="#servicos">Consultoria CREA</a></li>
+                <li><a href="#servicos">Consultoria Anatel</a></li>
+                <li><a href="#servicos">Projetos de Redes Ópticas (FTTH)</a></li>
+                <li><a href="#servicos">Consultoria ASN</a></li>
+                <li><a href="#servicos">Compartilhamento de Portes</a></li>
+                <li><a href="#servicos">Configuração de Equipamentos</a></li>
             </ul>
         </div>
         

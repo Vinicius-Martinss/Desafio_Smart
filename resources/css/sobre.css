@@ -1,0 +1,15 @@
+
+:root {
+  --fundo: #EBEBEB;
+  --detalhe: #3AB6C9;
+  --cor-acento: #464646;
+  --texto: #131313;
+}
+body {
+  font-family: 'Public Sans', sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+}
+h1,h2,h3 { color: var(--cor-acento); }
+.section-title { border-bottom: 3px solid var(--detalhe); display: inline-block; padding-bottom: .25rem; margin-bottom: 1.5rem; }
+.feature-icon { font-size: 2rem; color: var(--detalhe); margin-bottom: .5rem; }

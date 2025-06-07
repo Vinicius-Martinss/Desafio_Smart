@@ -40,7 +40,6 @@
         <a href="#">Início</a>
         <a href="#servicos">Serviços</a>
         <a href="/sobre">Sobre Nós</a>
-        <a href="/blog">Blog</a>
       </div>
       
       <!-- Botões -->

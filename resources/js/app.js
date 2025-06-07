@@ -8,6 +8,7 @@ import '../css/sidebar.css';
 import './sidebar';
 import '../css/navbar.css';
 import '../css/footer-app.css';
+import '../css/sobre.css';
 
 
 import Swal from 'sweetalert2';

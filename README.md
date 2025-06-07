@@ -4,9 +4,9 @@
 
 Sistema completo para gerenciamento de provedores de internet com autenticação por times, dashboard administrativo e geração de contratos profissionais.
 
-Laravel Version
-PHP Version
-License
+https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel
+https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php
+https://img.shields.io/badge/License-MIT-blue?style=for-the-badge
 ✨ Recursos Principais
 Funcionalidade	Descrição
 👥 Autenticação por Times	Sistema de permissões com Owner/Membro/Convidado
@@ -19,16 +19,12 @@ Funcionalidade	Descrição
 📚 Bibliotecas Frontend
 bash
 
-npm install sweetalert2 inputmask
-
 Biblioteca	Função	Documentação
 SweetAlert2	Notificações e alertas interativos	Docs
 Inputmask	Máscaras para campos de formulário	Docs
 DataTables	Tabelas interativas com filtros	Docs
 📦 Bibliotecas Backend
 bash
-
-composer require phpoffice/phpword
 
 Biblioteca	Função	Documentação
 PHPWord	Geração de documentos .docx	Docs
@@ -62,18 +58,25 @@ npm install
 
 # Instale bibliotecas adicionais
 npm install sweetalert2 inputmask
+
 composer require phpoffice/phpword
 
 # Configure o ambiente
 cp .env.example .env
+
 php artisan key:generate
 
 # Configure o banco de dados no arquivo .env
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=smart_db
+
 DB_USERNAME=root
+
 DB_PASSWORD=
 
 # Execute as migrações com dados de exemplo
@@ -94,11 +97,6 @@ Administrador:
 
     Senha: password
 
-Provedor:
-
-    Email: provider@smart.com
-
-    Senha: password
 
 🖥️ Uso das Bibliotecas
 SweetAlert2 (Notificações)
@@ -143,21 +141,6 @@ public function generateContract(User $user)
     return response()->download($filename);
 }
 
-📂 Estrutura de Diretórios
-
-app/
-├── Http/Controllers/     # Controladores
-├── Models/               # Modelos Eloquent
-├── Providers/            # Service Providers
-database/
-├── factories/            # Factories
-├── migrations/           # Migrations
-├── seeders/              # Seeders
-resources/
-├── js/                   # JavaScript/Vue components
-├── views/                # Blade templates
-routes/
-├── web.php               # Rotas principais
 
 🔌 Integração com APIs Externas
 ViaCEP
@@ -210,9 +193,8 @@ Este projeto está licenciado sob a Licença MIT.
 
 Para suporte ou dúvidas, entre em contato:
 
-    Email: contato@smarttelecom.com.br
+    Email: viniciusmartinsgsi@gmail.com
 
-    GitHub: @seu-usuario
+    GitHub: @Vinicius-Martinss
 
-<div align="center"> <p>Desenvolvido com ❤️ usando Laravel e Vue.js</p> <img src="https://laravel.com/img/logotype.min.svg" alt="Laravel" width="200"> </div>
-New chat
+<div align="center"> <p>Desenvolvido com ❤️ usando Laravel</p> <img src="https://laravel.com/img/logotype.min.svg" alt="Laravel" width="200"> </div>

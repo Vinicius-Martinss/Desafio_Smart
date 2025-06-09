@@ -1,5 +1,5 @@
 🚀 Sistema de Gerenciamento de Provedores de Internet
-<div align="center"> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100"> <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="Vue.js" width="85"> <img src="https://sweetalert2.github.io/images/SweetAlert2.png" alt="SweetAlert2" width="120"> </div>
+<div align="center"> <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="100">  <img src="https://sweetalert2.github.io/images/SweetAlert2.png" alt="SweetAlert2" width="120"> </div>
 🌟 Visão Geral
 
 Sistema completo para gerenciamento de provedores de internet com autenticação por times, dashboard administrativo e geração de contratos profissionais.
@@ -33,6 +33,7 @@ Laravel Jetstream	Autenticação com Teams	Docs
 API	Função	Documentação
 ViaCEP	Busca de endereços por CEP	Docs
 ReceitaWS	Validação de CNPJ e dados de empresas	Docs
+
 📦 Pré-requisitos
 
     PHP 8.1+
@@ -47,8 +48,8 @@ ReceitaWS	Validação de CNPJ e dados de empresas	Docs
 bash
 
 # Clone o repositório
-git clone https://github.com/seu-usuario/projeto-smart.git
-cd projeto-smart
+git clone https://github.com/Vinicius-Martinss/Desafio_Smart.git
+cd Desafio_Smart
 
 # Instale as dependências do PHP
 composer install
@@ -95,7 +96,7 @@ Administrador:
 
     Email: admin@smart.com
 
-    Senha: password
+    Senha: 123
 
 
 🖥️ Uso das Bibliotecas
